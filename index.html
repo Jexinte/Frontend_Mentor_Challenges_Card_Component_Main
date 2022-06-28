@@ -2,35 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Product preview card component</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- VUEJS3 -->
+  <script src="https://unpkg.com/vue@3"></script>
+  <title>Frontend Mentor | Product preview card component - Yokke</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+
 </head>
 <body>
 
-  Preview
+  <div id="app">
 
-  Gabrielle Essence Eau De Parfum
+      <div class="container">
 
-  A floral, solar and voluptuous interpretation composed by Olivier Polge, 
-  Perfumer-Creator for the House of CHANEL.
+        <!-- LEFT -->
+        <div class="left">
+          <img :src="imageDesktop" alt="">
+        </div>
 
-  $149.99
-  $169.99
+        <!-- RIGHT -->
+        <div class="right">
 
-  Add to Cart
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+            <p id="minortxt">{{minorText}}</p>
+            <h1>{{mainTitle}}</h1>
+            <p id="mainText">{{mainText}}</p>
+
+            <div class="price">
+                <p id="mainprice">${{mainPrice}}</p>
+                <p id="barredprice">${{barredPrice}}</p>
+            </div>
+            
+            <button id="buttontxt"><img :src="imageIcon"><span>{{buttonTxt}}</span></button>
+        </div>
+
+      </div>
+    
   </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          mainTitle : 'Gabrielle Essence Eau De Parfum',
+          minorText : 'PERFUME',
+          imageDesktop :'./images/image-product-desktop.jpg',
+          imageIcon : './images/icon-cart.svg',
+          mainText : 'A floral, solar and voluptuous interpretation composed  by Olivier Polge, Perfumer-Creator for the House of CHANEL.',
+          mainPrice:149.99,
+          barredPrice:169.99,
+          buttonTxt : 'Add to Cart'
+
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+
 </body>
 </html>
